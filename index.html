@@ -1,1 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>社交智慧時代</title>
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --paper: #fffdfa;
+      --text: #2c241f;
+      --muted: #6e6257;
+      --brand: #8b6a4f;
+      --brand-dark: #5f4634;
+      --line: #e7ddd2;
+      --accent: #efe5d8;
+      --shadow: 0 18px 45px rgba(60, 38, 20, 0.08);
+      --radius: 22px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(139,106,79,0.08), transparent 28%),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+      line-height: 1.8;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(251, 248, 243, 0.8);
+      border-bottom: 1px solid rgba(231, 221, 210, 0.75);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand small {
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+    }
+
+    .brand strong {
+      font-size: 1.2rem;
+      color: var(--brand-dark);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      padding: 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .cta {
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 64px 0 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .section-card,
+    .story-card,
+    .quote-card,
+    .footer-card {
+      background: rgba(255, 253, 250, 0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 52px;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--brand-dark);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      color: var(--brand-dark);
+    }
+
+    .lead {
+      margin: 0 0 26px;
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--brand-dark);
+      font-size: 0.96rem;
+    }
+
+    .btn.primary {
+      background: var(--brand-dark);
+      color: #fff;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--brand-dark);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .meta-box {
+      padding: 16px;
+      background: #fcf8f2;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .meta-box strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--brand-dark);
+      margin-bottom: 4px;
+    }
+
+    .meta-box span {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background: linear-gradient(160deg, #fffdf9 0%, #f3ebe1 100%);
+    }
+
+    .book-cover {
+      background: linear-gradient(180deg, rgba(95,70,52,0.94), rgba(139,106,79,0.92));
+      color: #fff;
+      border-radius: 24px;
+      min-height: 400px;
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover::before,
+    .book-cover::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .book-cover::before {
+      width: 240px;
+      height: 240px;
+      top: -80px;
+      right: -60px;
+    }
+
+    .book-cover::after {
+      width: 160px;
+      height: 160px;
+      bottom: 80px;
+      left: -50px;
+    }
+
+    .cover-kicker {
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.16em;
+      font-size: 0.82rem;
+      opacity: 0.8;
+      margin-bottom: 14px;
+    }
+
+    .cover-title {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+
+    .cover-desc {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 18px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--brand-dark);
+    }
+
+    .section-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .section-card {
+      padding: 24px;
+      background: var(--paper);
+    }
+
+    .section-card h3 {
+      margin: 10px 0 10px;
+      font-size: 1.2rem;
+      color: var(--brand-dark);
+    }
+
+    .section-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      color: var(--brand-dark);
+    }
+
+    .stories {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+
+    .story-card,
+    .quote-card,
+    .footer-card {
+      padding: 28px;
+      background: var(--paper);
+    }
+
+    .story-card h3,
+    .quote-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+      color: var(--brand-dark);
+    }
+
+    .story-card p,
+    .quote-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .story-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .story-tags span {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f8f2ea;
+      color: var(--brand-dark);
+      font-size: 0.86rem;
+    }
+
+    .quote-card blockquote {
+      margin: 0;
+      padding: 0;
+      font-size: 1.15rem;
+      color: var(--text);
+    }
+
+    .quote-card cite {
+      display: block;
+      margin-top: 14px;
+      font-style: normal;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .subscribe {
+      padding: 12px;
+      background: #fbf7f1;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .subscribe input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 12px 10px;
+      font-family: inherit;
+      font-size: 0.98rem;
+    }
+
+    .subscribe button {
+      border: none;
+      border-radius: 14px;
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 0 18px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 26px 0 54px;
+    }
+
+    .footer-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .stories,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 32px;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      nav ul { display: none; }
+      .nav { gap: 12px; }
+      .footer-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .subscribe {
+        flex-direction: column;
+      }
+      .subscribe button {
+        height: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <small>Social Wisdom Era</small>
+        <strong>社交智慧時代</strong>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">關於本書</a></li>
+          <li><a href="#themes">核心主題</a></li>
+          <li><a href="#stories">專欄故事</a></li>
+          <li><a href="#subscribe">訂閱新文</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#subscribe">立即閱讀</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="badge">新書概念首頁設計</div>
+        <h1>在關係密集的時代，<br>學會溫柔而清醒地活著。</h1>
+        <p class="lead">
+          《社交智慧時代》以醫師敘事、心理洞察與日常人際觀察為主軸，
+          陪伴讀者理解：真正的社交智慧，不只是懂得照顧別人，
+          更是能在關係中保有自己。
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#stories">閱讀主題故事</a>
+          <a class="btn secondary" href="#themes">瀏覽章節亮點</a>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-box">
+            <strong>12+</strong>
+            <span>章節主題規劃</span>
+          </div>
+          <div class="meta-box">
+            <strong>醫師視角</strong>
+            <span>結合門診故事與心理理解</span>
+          </div>
+          <div class="meta-box">
+            <strong>日常可讀</strong>
+            <span>適合專欄、官網與電子書首頁</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="book-cover">
+          <div class="cover-kicker">BOOK DESIGN / FEATURED TITLE</div>
+          <h2 class="cover-title">社交智慧時代</h2>
+          <p class="cover-desc">從疲憊、關係與意義感之間，找回內在的穩定。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <div>
+          <h2>這不只是一本談社交的書</h2>
+          <p>而是一本談關係、耗竭、自我價值與內在修復的書。</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <article class="section-card">
+          <div class="icon">◎</div>
+          <h3>看懂人際壓力</h3>
+          <p>從職場、家庭與日常互動中，看見那些被忽略的情緒勞動與無聲消耗。</p>
+        </article>
+        <article class="section-card">
+          <div class="icon">◇</div>
+          <h3>理解內在疲憊</h3>
+          <p>辨識「我只是累了」背後，是否其實藏著失衡、孤單與意義感流失。</p>
+        </article>
+        <article class="section-card">
+          <div class="icon">◌</div>
+          <h3>學會照顧自己</h3>
+          <p>把溫柔從對外付出，慢慢帶回自己身上，建立更成熟的社交智慧。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="themes">
+      <div class="section-head">
+        <div>
+          <h2>核心主題</h2>
+          <p>適合作為首頁導覽區塊、書籍章節前言或專欄分類入口。</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <article class="section-card">
+          <h3>社交障礙的時代</h3>
+          <p>在過度連結卻普遍孤單的年代，我們如何重新理解關係中的自己。</p>
+        </article>
+        <article class="section-card">
+          <h3>高敏感與高責任感</h3>
+          <p>那些總是先感受別人、先照顧整體的人，為何更容易累。</p>
+        </article>
+        <article class="section-card">
+          <h3>付出與界線</h3>
+          <p>真正成熟的善意，不是無限承擔，而是知道何時該停、該保留。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="stories">
+      <div class="stories">
+        <article class="story-card">
+          <h3>本週精選故事</h3>
+          <p>
+            那天診間來了一位四十出頭的女性。她說自己最近總覺得累，
+            不是哪裡特別痛，而是一種說不上來的疲倦。
+            她是那種總幫大家扛事的小主管，陪加班、先道歉、護團隊，
+            但心裡卻開始浮現一個問題：我這樣做，到底有什麼意義？
+          </p>
+          <p>
+            這正是《社交智慧時代》想談的核心：當一個人太習慣理解別人，
+            就更需要重新學會理解自己。
+          </p>
+          <div class="story-tags">
+            <span>#社交智慧</span>
+            <span>#情緒勞動</span>
+            <span>#職場疲憊</span>
+            <span>#意義感</span>
+          </div>
+        </article>
+
+        <aside class="quote-card">
+          <h3>一句話概念</h3>
+          <blockquote>
+            真正的社交智慧，不只是會和別人相處，
+            而是懂得在關係裡，不把自己弄丟。
+          </blockquote>
+          <cite>— 吉米廠醫說故事</cite>
+
+          <div id="subscribe" class="subscribe">
+            <input type="text" placeholder="輸入 Email，接收新文章與新章節通知" />
+            <button>訂閱</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-card">
+        <div>
+          <strong>社交智慧時代</strong>
+          <p>適合延伸製作為書籍首頁、品牌網站、醫師專欄頁或電子報封面。</p>
+        </div>
+        <p>© 2026 Social Wisdom Era</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
