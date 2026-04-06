@@ -151,6 +151,7 @@
       border-radius: 999px;
       border: 1px solid var(--brand-dark);
       font-size: 0.96rem;
+      display: inline-block;
     }
 
     .btn.primary {
@@ -461,6 +462,7 @@
           <li><a href="#about">關於本書</a></li>
           <li><a href="#themes">核心主題</a></li>
           <li><a href="#stories">專欄故事</a></li>
+          <li><a href="#campus">校園社交</a></li>
           <li><a href="#subscribe">訂閱新文</a></li>
         </ul>
       </nav>
@@ -622,6 +624,36 @@
         <a class="btn primary" href="OverLoad/JuniorSupervisor.html">閱讀完整主題：小主管的過載困境 →</a>
       </div>
     </section>
+
+    <section id="campus">
+      <div class="section-head">
+        <div>
+          <h2>校園社交智慧</h2>
+          <p>從青澀的互動中，學習如何建立健康的界線與自我認同。</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <article class="section-card">
+          <div class="icon">✿</div>
+          <h3>同儕壓力與認同</h3>
+          <p>在群體中找尋歸屬感，同時學會不為了迎合他人而失去真正的自我。</p>
+        </article>
+        <article class="section-card">
+          <div class="icon">✦</div>
+          <h3>社交恐慮與焦慮</h3>
+          <p>理解校園生活中的焦慮來源，學會與內心的不安相處，溫柔地踏出一步。</p>
+        </article>
+        <article class="section-card">
+          <div class="icon">⚓</div>
+          <h3>建立心理邊界</h3>
+          <p>提早練習拒絕與設定底線，讓校園生活成為通往成熟社交智慧的基石。</p>
+        </article>
+      </div>
+      <div style="margin-top:20px;">
+        <a class="btn secondary" href="Campus/MainCampusOverView.html">進入校園專題：探索成長中的社交習題 →</a>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -635,6 +667,7 @@
       </div>
     </div>
   </footer>
+
   <script>
     (function () {
       const key = 'social_wisdom_visit_count';
@@ -648,12 +681,11 @@
       }
     })();
   </script>
-  <!-- Firebase SDK (簡易版流量系統) -->
+
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
   <script>
-    // ⚠️ 請替換成你自己的 Firebase 設定
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT.firebaseapp.com",
@@ -662,7 +694,6 @@
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-
     const counterRef = db.collection('analytics').doc('visits');
 
     async function updateCounter() {
