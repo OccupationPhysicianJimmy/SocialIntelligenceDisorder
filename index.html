@@ -464,7 +464,10 @@
           <li><a href="#subscribe">訂閱新文</a></li>
         </ul>
       </nav>
-      <a class="cta" href="#subscribe">立即閱讀</a>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div id="visit-counter" style="padding:10px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--brand-dark); font-size:0.92rem; box-shadow:var(--shadow); white-space:nowrap;">到訪人次：1</div>
+        <a class="cta" href="#subscribe">立即閱讀</a>
+      </div>
     </div>
   </header>
 
@@ -632,5 +635,53 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      const key = 'social_wisdom_visit_count';
+      let count = localStorage.getItem(key);
+      count = count ? parseInt(count, 10) : 0;
+      count += 1;
+      localStorage.setItem(key, String(count));
+      const counter = document.getElementById('visit-counter');
+      if (counter) {
+        counter.textContent = '到訪人次：' + count.toLocaleString('zh-Hant-TW');
+      }
+    })();
+  </script>
+  <!-- Firebase SDK (簡易版流量系統) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ⚠️ 請替換成你自己的 Firebase 設定
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const counterRef = db.collection('analytics').doc('visits');
+
+    async function updateCounter() {
+      try {
+        const doc = await counterRef.get();
+        if (!doc.exists) {
+          await counterRef.set({ count: 1 });
+          document.getElementById('visit-counter').innerText = '👀 總到訪人次：1';
+        } else {
+          const newCount = (doc.data().count || 0) + 1;
+          await counterRef.update({ count: newCount });
+          document.getElementById('visit-counter').innerText = '👀 總到訪人次：' + newCount.toLocaleString('zh-Hant-TW');
+        }
+      } catch (e) {
+        console.error('Counter error:', e);
+      }
+    }
+
+    updateCounter();
+  </script>
 </body>
 </html>
