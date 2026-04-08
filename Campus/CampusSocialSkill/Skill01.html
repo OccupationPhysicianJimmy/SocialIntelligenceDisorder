@@ -1,1 +1,263 @@
 
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交智慧第一講｜老師的選擇</title>
+    <style>
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .theory-section {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .theory-section h3 { color: #2c3e50; border-left: 5px solid #5b86e5; padding-left: 10px; }
+        
+        .quiz-container {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px dashed #5b86e5;
+        }
+        .quiz-item {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        
+        button {
+            background: #ffeb3b;
+            color: #333;
+            border: none;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            transition: transform 0.2s, background 0.2s;
+        }
+        button:hover {
+            background: #ffd600;
+            transform: translateY(-2px);
+        }
+        .hidden { display: none; }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.1);
+        }
+        .summary-table td, .summary-table th {
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px;
+        }
+        .gold-text { color: #ffeb3b; font-weight: bold; font-size: 1.2em; }
+        blockquote {
+            margin: 15px 0;
+            padding: 10px 20px;
+            background: #eef2f3;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎓 社交智慧第一講</h1>
+    <h2>你不是來控制學生的</h2>
+
+    <div id="intro-section">
+        <div class="theory-section">
+            <h3>什麼是 Social Intelligence (社交智慧)？</h3>
+            <p>社交智慧是<strong>察覺他人情緒與動機</strong>，並據此調整自己回應方式的能力。在教室中，它能幫助老師從「情緒對立」轉向「深度連結」。</p>
+            
+            <blockquote>
+                <strong>教學現場案例：</strong><br>
+                當學生故意挑戰權威時，低社交智慧會將其視為「侮辱」並反擊；高社交智慧則能察覺這可能是「尋求歸屬感」或「掩飾學習挫折」的訊號。
+            </blockquote>
+
+            <div class="quiz-container">
+                <h4 style="margin-top:0;">📊 教師社交智慧自我評估</h4>
+                <div class="quiz-item"><span>1. 我能察覺教室氣氛的微小變化。</span><input type="checkbox"></div>
+                <div class="quiz-item"><span>2. 面對學生衝撞，我能先冷靜而不立即反擊。</span><input type="checkbox"></div>
+                <div class="quiz-item"><span>3. 我能聽出學生言語背後的挫折或不安。</span><input type="checkbox"></div>
+                <div class="quiz-item"><span>4. 我能根據學生的性格切換溝通方式。</span><input type="checkbox"></div>
+            </div>
+        </div>
+        <button onclick="startChallenge()">開始實戰模擬任務 🚀</button>
+    </div>
+
+    <div class="card hidden" id="step1">
+        <h3>情境一：日常分心</h3>
+        <p>上課時，小明低頭滑手機，完全沒在聽課。</p>
+        <button onclick="choose1('control')">😡 當場點名羞辱</button>
+        <button onclick="choose1('let')">😌 Let Them（給予彼此空間）</button>
+    </div>
+
+    <div class="card hidden" id="result1_control">
+        <h3>結果：控制路線</h3>
+        <p>學生表面安靜了，但內心充滿憤怒與反抗。<br>教室氣氛變得很尷尬。</p>
+        <p class="gold-text">👉 你贏了控制，輸了關係</p>
+        <button onclick="restart()">重新修煉</button>
+    </div>
+
+    <div class="card hidden" id="result1_let">
+        <h3>結果：Let Them</h3>
+        <p>你選擇先穩定課程，觀察他的狀態而非急著糾正。<br>你保留了後續對話的餘地。</p>
+        <button onclick="nextStep(2)">進入下一個情境</button>
+    </div>
+
+    <div class="card hidden" id="step2">
+        <h3>情境二：課後連結</h3>
+        <p>下課後，你找到小明，你開口的第一句話是？</p>
+        <button onclick="choose2('lecture')">📢 說教：「你這樣對得起父母嗎？」</button>
+        <button onclick="choose2('letme')">🧠 Let Me：提問了解他的需求</button>
+    </div>
+
+    <div class="card hidden" id="result2_lecture">
+        <h3>結果：說教路線</h3>
+        <p>學生點頭稱是，但心門關得更緊了。<br>他學會了下次要躲得更好。</p>
+        <button onclick="restart()">重新修煉</button>
+    </div>
+
+    <div class="card hidden" id="result2_letme">
+        <h3>結果：Let Me 路線</h3>
+        <p>你問：「剛才看你很專心在用手機，是有什麼緊急的事嗎？」<br>學生感覺被關心，而非被審判，開始願意說實話。</p>
+        <button onclick="nextStep(3)">挑戰最終關卡</button>
+    </div>
+
+    <div class="card hidden" id="step3">
+        <h3>情境三：公開挑釁</h3>
+        <p>小明在全班面前大喊：「老師這課好無聊，學了又沒用！」</p>
+        <button onclick="choose3('power')">🔥 強力鎮壓：捍衛教師威嚴</button>
+        <button onclick="choose3('curious')">🤔 保持好奇：邀請共創對話</button>
+    </div>
+
+    <div class="card hidden" id="result3_power">
+        <h3>結果：權威路線</h3>
+        <p>你大聲斥責並罰站他。秩序恢復了，但信任瓦解了。<br>學生學會了「強權即正義」。</p>
+        <button onclick="restart()">重新修煉</button>
+    </div>
+
+    <div class="card hidden" id="result3_curious">
+        <h3>結果：好奇路線</h3>
+        <p>你平靜地說：「你願意分享哪個部分對你來說最沒用嗎？也許我們可以調整。」<br>挑釁被轉化為教學討論的契機。</p>
+        <button onclick="finalStep()">檢視最終成就</button>
+    </div>
+
+    <div class="card hidden" id="final">
+        <h2>🎯 教學覺醒：社交智慧總結</h2>
+        <p class="gold-text">「教育不是注滿一桶水，而是點燃一團火。」</p>
+        
+        <table class="summary-table">
+            <tr>
+                <th>核心概念</th>
+                <th>低維度反應</th>
+                <th>高社交智慧</th>
+            </tr>
+            <tr>
+                <td>**看見行為**</td>
+                <td>視為挑釁</td>
+                <td>視為**訊號**</td>
+            </tr>
+            <tr>
+                <td>**應對目標**</td>
+                <td>立即控制行為</td>
+                <td>優先**建立連結**</td>
+            </tr>
+            <tr>
+                <td>**語言運用**</td>
+                <td>單向說教</td>
+                <td>**雙向提問**</td>
+            </tr>
+        </table>
+
+        <h3>真正的智慧是：不急著修正對方，先穩住自己。</h3>
+        <p>當學生感到被理解，真正的改變才會發生。</p>
+        <button onclick="restart()">再次修煉</button>
+    </div>
+</div>
+
+<script>
+    function startChallenge() {
+        document.getElementById("intro-section").classList.add("hidden");
+        document.getElementById("step1").classList.remove("hidden");
+    }
+
+    function choose1(type){
+        document.getElementById("step1").classList.add("hidden");
+        if(type==="control"){
+            document.getElementById("result1_control").classList.remove("hidden");
+        }else{
+            document.getElementById("result1_let").classList.remove("hidden");
+        }
+    }
+
+    function nextStep(step){
+        document.getElementById("result1_let").classList.add("hidden");
+        document.getElementById("result2_letme").classList.add("hidden");
+        document.getElementById("step" + step).classList.remove("hidden");
+    }
+
+    function choose2(type){
+        document.getElementById("step2").classList.add("hidden");
+        if(type==="lecture"){
+            document.getElementById("result2_lecture").classList.remove("hidden");
+        }else{
+            document.getElementById("result2_letme").classList.remove("hidden");
+        }
+    }
+
+    function choose3(type){
+        document.getElementById("step3").classList.add("hidden");
+        if(type==="power"){
+            document.getElementById("result3_power").classList.remove("hidden");
+        }else{
+            document.getElementById("result3_curious").classList.remove("hidden");
+        }
+    }
+
+    function finalStep(){
+        document.getElementById("result3_curious").classList.add("hidden");
+        document.getElementById("final").classList.remove("hidden");
+    }
+
+    function restart(){
+        location.reload();
+    }
+</script>
+
+</body>
+</html>
