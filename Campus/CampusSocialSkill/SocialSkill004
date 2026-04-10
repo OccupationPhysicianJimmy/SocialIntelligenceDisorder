@@ -1,1 +1,106 @@
 
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+    .article-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 30px;
+        background-color: #f9fbfd;
+        border-left: 8px solid #2a7da3;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        font-family: "Microsoft JhengHei", sans-serif;
+        line-height: 1.8;
+        color: #333;
+    }
+    .doctor-header {
+        color: #2a7da3;
+        border-bottom: 2px solid #2a7da3;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+    .sub-title {
+        color: #c0392b;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 20px;
+    }
+    .highlight-box {
+        background-color: #ffffff;
+        border: 1px solid #e1e8ed;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 15px 0;
+    }
+    .cue-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .cue-list li {
+        margin-bottom: 15px;
+        padding-left: 25px;
+        position: relative;
+    }
+    .cue-list li::before {
+        content: "🔍";
+        position: absolute;
+        left: 0;
+    }
+    .action-tip {
+        background-color: #e8f4f8;
+        padding: 15px;
+        border-radius: 5px;
+        font-style: italic;
+    }
+    .footer-note {
+        margin-top: 30px;
+        font-size: 0.9em;
+        color: #7f8c8d;
+        border-top: 1px dashed #bdc3c7;
+        padding-top: 15px;
+    }
+</style>
+</head>
+<body>
+
+<div class="article-container">
+    <h1 class="doctor-header">【醫師專欄】老師的診間觀察術：從非語言訊號，聽見學生「沒說出口的求救聲」</h1>
+    
+    <p>在診間，我不只聽病人的主訴，更觀察他們進門的方式。同樣的道理，對於身心負擔已達臨界點的國小老師來說，學習<strong>「非語言訊號（Non-verbal Cues）」</strong>的判讀，不僅能提升班級經營效率，更能預判風暴，減少你與學生產生正面情緒對撞的機會。</p>
+
+    <h2 class="sub-title">一、 診斷「身體語言」：解碼隱藏的心理狀態</h2>
+    <div class="highlight-box">
+        <ul class="cue-list">
+            <li><strong>眼神的偏移 (The Eyes)：</strong>
+                避開視線可能代表羞愧或恐懼；過度盯視（Hyper-vigilance）有時則是防禦性的攻擊預備，代表孩子正處於「戰或逃」的邊緣。</li>
+            <li><strong>姿勢的僵硬與退縮 (The Posture)：</strong>
+                肩膀聳起、胸腔緊縮是典型的保護姿勢。當孩子刻意拉開物理距離，那是他在建立心靈防線。</li>
+            <li><strong>躁動與微動作 (Micro-movements)：</strong>
+                頻繁晃動、抖腳是為了釋放體內過剩的壓力荷爾蒙（皮質醇）；摳手皮、咬指甲則暗示內在正經歷強烈不安。</li>
+        </ul>
+    </div>
+
+    <h2 class="sub-title">二、 判讀「沉默」與「斷連」</h2>
+    <p>在醫學上，異常的沉默有時比尖叫更令人擔憂。這可能是心理學上的<strong>「凍結 (Freeze)」</strong>反應。當壓力超載，大腦會暫時切斷與外界的聯繫。這不是「沒禮貌」，若在此時過度逼問，反而會加劇神經系統的崩潰。</p>
+
+    <h2 class="sub-title">三、 醫師的防彈處方：給老師的行動建議</h2>
+    <div class="action-tip">
+        <ol>
+            <li><strong>建立基準線 (Baseline)：</strong> 觀察學生正常時的樣貌，才能敏銳捕捉變異。</li>
+            <li><strong>降低身體高度：</strong> 蹲下與孩子說話，能有效減少「階級威脅感」，穩定神經系統。</li>
+            <li><strong>賦予語言標籤：</strong> 替孩子說出感受（例如：「你看起來很委屈」），能啟動孩子的前額葉皮質。</li>
+        </ol>
+    </div>
+
+    <p style="margin-top:20px;"><strong>醫師真心話：</strong> 「看見」就是療癒的開始。當你不再被表象行為激怒，你的情緒能量才能被保留下來，保護你不被環境「擊穿」。</p>
+
+    <div class="footer-note">
+        👨‍⚕️ <strong>醫師小提醒：</strong>本內容旨在提供心理防護機制參考。若長期出現失眠、胸悶等症狀，請務必尋求專業醫療協助。
+        <br>#教師健康 #身心醫學 #非語言溝通 #身心防彈術
+    </div>
+</div>
+
+</body>
+</html>
